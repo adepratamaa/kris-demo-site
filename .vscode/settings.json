@@ -1,0 +1,10 @@
+{
+  "cucumberautocomplete.steps": ["tests/steps/***.steps.ts"],
+  "cucumberautocomplete.strictGherkinCompletion": true,
+  "cucumber.features": [
+    "src/test/**/*.feature",
+    "features/**/*.feature",
+    "tests/**/*.feature",
+    "*specs*/**/*.feature"
+  ]
+}
