@@ -43,7 +43,7 @@ export default defineConfig({
     trace: 'on-first-retry',
     testIdAttribute: 'id',
     headless: true,
-    viewport: { width: 1480, height: 840 },
+    viewport: { width: 1480, height: 800 },
     ignoreHTTPSErrors: true,
     video: 'on-first-retry',
     defaultBrowserType: 'chromium',

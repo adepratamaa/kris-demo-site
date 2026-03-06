@@ -38,6 +38,8 @@ export class EsubmissionPage {
   readonly approveBtn: Locator;
   readonly approveBtnDrawer: Locator;
   readonly submissionTitleInParticipatedMenu: Locator;
+  readonly searchInput: Locator;
+  readonly submissionTitleInMyTask: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -122,13 +124,18 @@ export class EsubmissionPage {
     this.approveBtnDrawer = page.locator(
       '.el-drawer__body .actionBtn .postbtn-text',
     );
+    this.submissionTitleInMyTask = page.locator(
+      '#app div.search-submissionTitle .search-submission-text',
+    );
+    this.searchInput = page.getByPlaceholder(
+      'Search submission title or ID...',
+    );
     this.submissionTitleInParticipatedMenu = page.locator(
       '#pane-1 li:nth-child(1) div.inprogress-submissiodtitle1 .search-submission-text',
     );
   }
 
   async verifyEsubmissionPage() {
-    // await expect(this.emergencyLevel).toBeVisible();
     await expect(this.createNewSubmissionBtn).toBeVisible();
   }
 
@@ -289,9 +296,11 @@ export class EsubmissionPage {
   }
 
   async openPreviousTask(title: string) {
-    await expect(this.page.getByTestId('pane-0')).toBeVisible();
-    await expect(this.myTaskTitle).toContainText(title);
-    await this.myTaskTitle.click();
+    await expect(this.searchInput).toBeVisible();
+    await this.searchInput.pressSequentially(title, { delay: 50 });
+    await this.searchInput.press('Enter');
+    await expect(this.submissionTitleInMyTask.first()).toHaveText(title);
+    await this.submissionTitleInMyTask.click();
   }
 
   async approveTask(arg: string) {
