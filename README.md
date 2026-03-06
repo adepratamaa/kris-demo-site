@@ -51,6 +51,7 @@ So you can run the tests manually:
 2. Select Test Workflow
 3. Click Run workflow
 ```
+
 <img width="1326" height="882" alt="Screenshot 2026-03-06 at 18 57 14" src="https://github.com/user-attachments/assets/733e969d-91d5-4b54-bbb9-20e3a591c23d" />
 
 # Test Structure Explanation
@@ -74,14 +75,11 @@ It makes everything reusable and easier to maintenance
 
 # Improvement areas
 
-If this project were expanded further, the following improvements could
-be implemented.
-
-Enable parallel test execution to reduce test runtime.
-
-### Test Reporting
-
-Integrate reporting to tools like jira, clickup, slack
+```bash
+Update the selector from using class to test-id, could prevent flakines
+Enable parallel test execution to reduce test runtime
+Integrate the result to project management tools or communication tools (jira, clickup, slack)
 Run tests across multiple browsers (Chrome, Firefox, WebKit).
+```
 
 ---
