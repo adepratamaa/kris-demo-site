@@ -1,5 +1,3 @@
-# Automation Test
-
 # Test Automation Setup
 
 ## 1. Clone the repository
@@ -53,6 +51,7 @@ So you can run the tests manually:
 2. Select Test Workflow
 3. Click Run workflow
 ```
+<img width="1326" height="882" alt="Screenshot 2026-03-06 at 18 57 14" src="https://github.com/user-attachments/assets/733e969d-91d5-4b54-bbb9-20e3a591c23d" />
 
 # Test Structure Explanation
 
@@ -68,6 +67,8 @@ This is contain the implementation of each Gherkin step
 
 Page Object Model used to separate UI interactions from test logic
 It makes everything reusable and easier to maintenance
+
+<img width="278" height="332" alt="Screenshot 2026-03-06 at 18 55 37" src="https://github.com/user-attachments/assets/be15b70c-970c-4558-9b54-fdeeb4b9f167" />
 
 ---
 
