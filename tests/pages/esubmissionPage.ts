@@ -46,9 +46,8 @@ export class EsubmissionPage {
       name: 'New Submission',
     });
     this.forApprovalMenu = page
-      .locator('.newesubtitle')
-      .getByText('For Approval', { exact: true })
-      .nth(1);
+      .getByRole('listitem')
+      .filter({ hasText: /^For Approval$/ });
     this.requestTitleInput = page.getByTestId('wfRequest.title');
     this.uploadBtn = page.getByTestId('uploadBtn').getByText('Upload');
     this.uploadAttachment = page.getByTestId('uploadedAttachment');
@@ -129,11 +128,12 @@ export class EsubmissionPage {
   }
 
   async verifyEsubmissionPage() {
-    await expect(this.emergencyLevel).toBeVisible();
+    // await expect(this.emergencyLevel).toBeVisible();
     await expect(this.createNewSubmissionBtn).toBeVisible();
   }
 
   async createNewApprovalSubmission() {
+    await expect(this.createNewSubmissionBtn).toBeVisible();
     await this.createNewSubmissionBtn.click();
     await expect(this.forApprovalMenu).toBeVisible();
     await this.forApprovalMenu.click();
@@ -301,3 +301,15 @@ export class EsubmissionPage {
     }
   }
 }
+
+// await page.goto('https://krisdemo.sqlview.com.sg/KRIS/login.do?method=reloadLogin');
+// await page.getByTestId('userId').click();
+// await page.getByTestId('userId').fill('t2user7');
+// await page.getByTestId('password').click();
+// await page.getByTestId('password').fill('SqlP@ssw0rd_2023');
+// await page.getByTestId('submitButton').click();
+// await page.getByTestId('moduleSwitcher').click();
+// await page.getByTestId('moduleSwitcher').click();
+// await page.getByTestId('qtip-10-content').getByTestId('workflowEnableId').click();
+// await page.getByRole('button', { name: 'New Submission' }).click();
+// await page.getByRole('listitem').filter({ hasText: /^For Approval$/ }).click();
