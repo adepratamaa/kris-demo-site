@@ -1,5 +1,13 @@
 # Test Automation Setup
 
+## Prerequisites
+
+Make sure the following tools are installed:
+
+- Node.js
+- npm
+- Git
+
 ## 1. Clone the repository
 
 ```bash
@@ -9,8 +17,6 @@ cd kris-demo-site
 
 ## 2. Install dependencies
 
-Make sure Node.js is installed
-
 ```bash
 npm install
 ```
@@ -19,7 +25,7 @@ npm install
 
 Create a `.env` file in the project root
 
-Example:
+Contain:
 
     USER_ID_1=username
     PASSWORD_1=password
@@ -62,24 +68,24 @@ Feature files use BDD Gherkin syntax to describe system behavior more readable
 
 ### Step Definitions
 
-This is contain the implementation of each Gherkin step
+This contain the implementation of each Gherkin step
 
-### Page Object Model
+### Pages
 
-Page Object Model used to separate UI interactions from test logic
-It makes everything reusable and easier to maintenance
+This place where I store the selectors for each of module or page
+
+Seperate between gherkin syntax, steps and
 
 <img width="278" height="332" alt="Screenshot 2026-03-06 at 18 55 37" src="https://github.com/user-attachments/assets/be15b70c-970c-4558-9b54-fdeeb4b9f167" />
 
 ---
 
-# Improvement areas
+# Possible improvement areas
 
-```bash
-Update the selector from using class to test-id, could prevent flakines
-Enable parallel test execution to reduce test runtime
-Integrate the result to project management tools or communication tools (jira, clickup, slack)
-Run tests across multiple browsers (Chrome, Firefox, WebKit).
-```
+- Some buttons or fields do not have `data-testid` attributes, so a few selectors are still fragile. In the future, I would improve this by using more stable selectors to reduce test flakiness.
+- Enable parallel test execution to reduce test runtime and obtain results faster. This would be especially useful for regression testing.
+- Integrate test results with project management or communication tools such as Jira, ClickUp, or Slack so the team can easily track test outcomes in one place.
+- Run tests across multiple browsers (Chrome, Firefox, WebKit) to ensure cross-browser compatibility.
+- Improve the framework structure by adding helper utilities and refactoring files such as `esubmissionPage.ts` to improve maintainability.
 
 ---
