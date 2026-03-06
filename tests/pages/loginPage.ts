@@ -49,7 +49,9 @@ export class LoginPage {
   }
 
   async clickLogout() {
+    const response = this.page.waitForResponse('**/KRISADMIN/getAccountInfo');
     await this.page.reload();
+    await response;
     await expect(this.accountButton).toBeVisible();
     await this.accountButton.click();
     await expect(this.logoutButton).toBeVisible();

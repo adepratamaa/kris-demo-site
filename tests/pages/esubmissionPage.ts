@@ -125,7 +125,7 @@ export class EsubmissionPage {
       '.el-drawer__body .actionBtn .postbtn-text',
     );
     this.submissionTitleInMyTask = page.locator(
-      '#app div.search-submissionTitle .search-submission-text',
+      '#app div.search-submissionTitle .search-requested-text .search-submission-text',
     );
     this.searchInput = page.getByPlaceholder(
       'Search submission title or ID...',
@@ -297,10 +297,14 @@ export class EsubmissionPage {
 
   async openPreviousTask(title: string) {
     await expect(this.searchInput).toBeVisible();
+    const response = this.page.waitForResponse(
+      '**/KRISADMIN/searchSubmissionsByIdOrTitle',
+    );
     await this.searchInput.pressSequentially(title, { delay: 50 });
     await this.searchInput.press('Enter');
+    await response;
     await expect(this.submissionTitleInMyTask.first()).toHaveText(title);
-    await this.submissionTitleInMyTask.click();
+    await this.submissionTitleInMyTask.first().click();
   }
 
   async approveTask(arg: string) {
