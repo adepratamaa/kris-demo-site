@@ -35,7 +35,7 @@ Contain:
 
 This to avoid hardcoding credentials inside test scripts
 
-## 4. Run the tests
+## 4. Run the tests locally
 
 Run all tests:
 
