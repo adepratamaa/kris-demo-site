@@ -89,3 +89,5 @@ Seperate between gherkin syntax, steps and
 - Improve the framework structure by adding helper utilities and refactoring files such as `esubmissionPage.ts` to improve maintainability.
 
 ---
+
+### Warm regards, Ade
