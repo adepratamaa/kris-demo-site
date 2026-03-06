@@ -1,13 +1,86 @@
-**Steps**
+# Automation Test
 
-1. git clone https://github.com/adepratamaa/kris-demo-site.git
-2. cd kris-demo-site
-3. npm install
-4. Create a .env file in the project root
-   USER_ID_1=your_username
-   PASSWORD_1=your_password
-   USER_ID_2=your_username
-   PASSWORD_2=your_password
-   BASE_URL=https://example-demo-site.com
-5. run npxbddgen
-6. run npx playwright test
+# Test Automation Setup
+
+## 1. Clone the repository
+
+```bash
+git clone https://github.com/adepratamaa/kris-demo-site.git
+cd kris-demo-site
+```
+
+## 2. Install dependencies
+
+Make sure Node.js is installed
+
+```bash
+npm install
+```
+
+## 3. Configure environment variables
+
+Create a `.env` file in the project root
+
+Example:
+
+    USER_ID_1=username
+    PASSWORD_1=password
+    USER_ID_2=username
+    PASSWORD_2=password
+    BASE_URL=https://example-demo-site.com
+
+This to avoid hardcoding credentials inside test scripts
+
+## 4. Run the tests
+
+Run all tests:
+
+```bash
+npx bddgen
+```
+
+```bash
+npx playwright test
+```
+
+## 5. Trigger it manually
+
+This project includes a CI/CD workflow using GitHub Actions.
+So you can run the tests manually:
+
+```bash
+1. Go to the Actions tab in the repository
+2. Select Test Workflow
+3. Click Run workflow
+```
+
+# Test Structure Explanation
+
+### Feature Files
+
+Feature files use BDD Gherkin syntax to describe system behavior more readable
+
+### Step Definitions
+
+This is contain the implementation of each Gherkin step
+
+### Page Object Model
+
+Page Object Model used to separate UI interactions from test logic
+It makes everything reusable and easier to maintenance
+
+---
+
+# Improvement areas
+
+If this project were expanded further, the following improvements could
+be implemented.
+
+Enable parallel test execution to reduce test runtime.
+
+### Test Reporting
+
+Integrate reporting to tools like jira, clickup, slack
+Run tests across multiple browsers (Chrome, Firefox, WebKit).
+
+---
