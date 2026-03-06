@@ -10,8 +10,6 @@ on:
         required: true
         options:
           - chromium
-          - firefox
-          - webkit
 
   # trigger: push new changes
   push:
@@ -23,6 +21,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
+      BASE_URL: ${{ vars.BASE_URL }}
       USER_ID_1: ${{ secrets.USER_ID_1 }}
       PASSWORD_1: ${{ secrets.PASSWORD_1 }}
       USER_ID_2: ${{ secrets.USER_ID_2 }}
