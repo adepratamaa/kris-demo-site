@@ -4,17 +4,7 @@ import { faker } from '@faker-js/faker';
 
 const { Given, When, Then } = createBdd(test);
 
-const title = `${faker.word.words(1)}-QA`;
-
-Given(
-  'the user login with user id {string} and password {string}',
-  async ({ loginPage, dashboardpage }, userId: string, password: string) => {
-    await loginPage.navigateToURL();
-    await loginPage.inputUserAndPassword(userId, password);
-    await loginPage.clickLogin();
-    await dashboardpage.verifyDashboardPage();
-  },
-);
+const title = `QA-${faker.number.int({ min: 1, max: 9999 })}`;
 
 Given(
   'the user opens the E-submission module',
@@ -31,12 +21,9 @@ When(
   },
 );
 
-When(
-  'fills all mandatory fields with valid data',
-  async ({ esubmissionPage }) => {
-    await esubmissionPage.fillMandatoryFields(title);
-  },
-);
+When('fills the title', async ({ esubmissionPage }) => {
+  await esubmissionPage.fillTheTitle(title);
+});
 
 When('uploads the required documents', async ({ esubmissionPage }) => {
   await esubmissionPage.uploadDocuments();
@@ -107,7 +94,7 @@ When(
   },
 );
 
-Then('terminated submission is listed there', async ({ esubmissionPage }) => {
+Then('the submission is listed there', async ({ esubmissionPage }) => {
   await esubmissionPage.verifySubmissionName(title);
 });
 

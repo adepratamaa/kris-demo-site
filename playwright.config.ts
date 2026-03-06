@@ -1,4 +1,4 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig } from '@playwright/test';
 import { defineBddConfig } from 'playwright-bdd';
 import dotenv from 'dotenv';
 import path from 'path';
@@ -32,7 +32,7 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   expect: { timeout: 10000 },
-  timeout: 120000,
+  timeout: 60000,
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
@@ -43,9 +43,10 @@ export default defineConfig({
     trace: 'on-first-retry',
     testIdAttribute: 'id',
     headless: true,
-    viewport: { width: 1480, height: 920 },
+    viewport: { width: 1480, height: 840 },
     ignoreHTTPSErrors: true,
     video: 'on-first-retry',
+    defaultBrowserType: 'chromium',
   },
 
   /* Configure projects for major browsers */

@@ -2,7 +2,6 @@ import { Locator, Page, expect } from '@playwright/test';
 
 export class EsubmissionPage {
   readonly page: Page;
-
   readonly emergencyLevel: Locator;
   readonly createNewSubmissionBtn: Locator;
   readonly forApprovalMenu: Locator;
@@ -38,6 +37,7 @@ export class EsubmissionPage {
   readonly myTaskTitle: Locator;
   readonly approveBtn: Locator;
   readonly approveBtnDrawer: Locator;
+  readonly submissionTitleInParticipatedMenu: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -123,6 +123,9 @@ export class EsubmissionPage {
     this.approveBtnDrawer = page.locator(
       '.el-drawer__body .actionBtn .postbtn-text',
     );
+    this.submissionTitleInParticipatedMenu = page.locator(
+      '#pane-1 li:nth-child(1) div.inprogress-submissiodtitle1 .search-submission-text',
+    );
   }
 
   async verifyEsubmissionPage() {
@@ -137,7 +140,7 @@ export class EsubmissionPage {
     await expect(this.requestTitleInput).toBeVisible();
   }
 
-  async fillMandatoryFields(title: string) {
+  async fillTheTitle(title: string) {
     await this.requestTitleInput.pressSequentially(title, { delay: 50 });
   }
 
@@ -276,11 +279,7 @@ export class EsubmissionPage {
 
   async verifySubmissionName(title: string) {
     await expect(this.participatedTable).toBeVisible();
-    await expect(
-      this.page.locator(
-        '#pane-1 li:nth-child(1) div.inprogress-submissiodtitle1',
-      ),
-    ).toContainText(title);
+    await expect(this.submissionTitleInParticipatedMenu).toContainText(title);
   }
 
   async verifyStatusInColumn(status: string) {
